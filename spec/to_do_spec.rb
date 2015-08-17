@@ -53,13 +53,13 @@ describe(Task) {
     end
   end
 
-  # describe('.clear') {
-  #   it ("clears the list of tasks that were saved") {
-  #     new_task = Task.new("feed the midget")
-  #     new_task.save
-  #     Task.clear
-  #     expect(Task.all).to(eq([]))
-  #   }
-  # }
+  describe('.clear') {
+    it ("clears the list of tasks that were saved") {
+      new_task = Task.new({:description => "learn SQL", :list_id => 1, :due_date => '2015-08-17 00:00:00'})
+      new_task.save
+      Task.clear
+      expect(Task.all).to(eq([]))
+    }
+  }
 
 }
