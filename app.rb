@@ -40,3 +40,7 @@ get('/lists/:id') do
   @list = List.find(id)
   erb(:list)
 end
+
+post("/clear_list") do
+  erb(:list)
+end

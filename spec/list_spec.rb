@@ -57,4 +57,18 @@ describe(List) do
     end
   end
 
+  describe("#tasks") do
+    it("will list the tasks for that specific list") do
+      test_list = List.new({:name => "movies", :id => nil})
+      test_list.save()
+      task_1 = Task.new({:description => "learn SQL", :list_id => test_list.id(), :due_date => '2015-08-16 00:00:00'})
+      task_1.save()
+      task_2 = Task.new({:description => "learn Ruby", :list_id => test_list.id(), :due_date => '2015-08-17 00:00:00'})
+      task_2.save()
+      task_3 = Task.new({:description => "learn ember", :list_id => 2, :due_date => '2015-08-17 00:00:00'})
+      task_3.save()
+      expect(test_list.tasks()).to(eq([task_1, task_2]))
+    end
+  end
+
 end
