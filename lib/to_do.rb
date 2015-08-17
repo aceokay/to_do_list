@@ -1,8 +1,9 @@
 class Task
-  attr_reader :description
+  attr_reader :description, :list_id
 
   define_method(:initialize) do |attributes|
     @description = attributes.fetch(:description)
+    @list_id = attributes.fetch(:list_id)
   end
 
   define_singleton_method(:all) do
@@ -10,13 +11,14 @@ class Task
     tasks = []
     returned_tasks.each do |task|
       description = task.fetch("description")
-      tasks << Task.new({:description => description})
+      list_id = task.fetch("list_id").to_i
+      tasks << Task.new({:description => description, :list_id => list_id})
     end
     tasks
   end
 
   define_method(:save) do
-    DB.exec("INSERT INTO tasks (description) VALUES ('#{@description}');")
+    DB.exec("INSERT INTO tasks (description, list_id) VALUES ('#{@description}', #{@list_id});")
   end
 
   # define_singleton_method(:clear) do
@@ -24,6 +26,6 @@ class Task
   # end
 
   define_method(:==) do |another_task|
-    self.description() == another_task.description()
+    self.description() == another_task.description() && self.list_id == another_task.list_id
   end
 end
