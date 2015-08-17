@@ -1,11 +1,14 @@
 require('rspec')
 require('to_do')
+require('pg')
+
+DB = PG.connect({:dbname => to_do_test})
 
 describe (Task) {
   before() {
     Task.clear()
   }
-  
+
   describe ('#description') {
     it("lets you give it a description of a task") {
       test_task = Task.new("make me coffee")
