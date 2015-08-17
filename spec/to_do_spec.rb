@@ -4,13 +4,21 @@ require('pg')
 
 DB = PG.connect({:dbname => 'to_do_test'})
 
-RSPEC.configure do |config|
+RSpec.configure do |config|
   config.after(:each) do
     DB.exec("DELETE FROM tasks *;")
   end
 end
 
 describe(Task) {
+
+  describe('#==') {
+    it("is the same task if it has the same description") {
+      task_1 = Task.new({:description => "learn SQL"})
+      task_2 = Task.new({:description => "learn SQL"})
+      expect(task_1).to(eq(task_2))
+    }
+  }
 
   describe ('#description') {
     it("lets you give it a description of a task") {
