@@ -31,16 +31,18 @@ post("/tasks") do
   @list = List.find(list_id)
   @task = Task.new({:description => description, :due_date => due_date, :list_id => list_id})
   @task.save()
-  @tasks = Task.all
+  @tasks = @list.tasks
   erb(:list)
 end
 
 get('/lists/:id') do
   id = params.fetch("id").to_i
   @list = List.find(id)
+  @tasks = @list.tasks
   erb(:list)
 end
 
 post("/clear_list") do
+
   erb(:list)
 end

@@ -13,3 +13,15 @@ describe("/lists", {:type => :feature}) do
     expect(page).to have_content("To Do List")
   end
 end
+
+describe("/tasks", {:type => :feature}) do
+  it("allows the user to add a new task") do
+    test_list = List.new({:name => "Chores", :id => nil})
+    test_list.save
+    visit("/lists/#{test_list.id}")
+    fill_in("description", :with => "Clean Room")
+    fill_in("due_date", :with => "2015-07-16")
+    click_button("Add Task")
+    expect(page).to have_content("Clean Room")
+  end
+end
