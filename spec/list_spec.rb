@@ -47,4 +47,14 @@ describe(List) do
     end
   end
 
+  describe(".find") do
+    it("finds a list by its id number") do
+      test_list = List.new({:name => "movies", :id => nil})
+      test_list.save
+      test_list_2 = List.new({:name => "chores", :id => nil})
+      test_list_2.save
+      expect(List.find(test_list.id)).to(eq(test_list))
+    end
+  end
+
 end

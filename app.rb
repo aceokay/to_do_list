@@ -30,3 +30,9 @@ post("/tasks") do
   @task.save()
   erb(:success)
 end
+
+get('/lists/:id') do
+  id = params.fetch("id")
+  @list = List.find(id)
+  erb(:list)
+end

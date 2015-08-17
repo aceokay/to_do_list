@@ -31,4 +31,12 @@ class List
     DB.exec("DELETE FROM lists *;")
   end
 
+  define_singleton_method(:find) do |ident|
+    found_list = nil
+    List.all.each do |list|
+      found_list = list if list.id == ident
+    end
+    found_list
+  end
+
 end
