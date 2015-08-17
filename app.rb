@@ -26,13 +26,17 @@ end
 
 post("/tasks") do
   description = params.fetch("description")
-  @task = Task.new({:description => description})
+  due_date = params.fetch("due_date")
+  list_id = params.fetch("list_id").to_i
+  @list = List.find(list_id)
+  @task = Task.new({:description => description, :due_date => due_date, :list_id => list_id})
   @task.save()
-  erb(:success)
+  @tasks = Task.all
+  erb(:list)
 end
 
 get('/lists/:id') do
-  id = params.fetch("id")
+  id = params.fetch("id").to_i
   @list = List.find(id)
   erb(:list)
 end

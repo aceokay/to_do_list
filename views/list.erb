@@ -11,8 +11,13 @@
 
 <p>Create a new task: </p>
 <form action = "/tasks" method = "post">
+  <input id="list_id" name="list_id" type="hidden" value="<%=@list.id%>">
+
   <label for = "description">Task Description </label>
   <input id = "description" name = "description" type = "text">
+
+  <label for = "due_date">Task Due Date </label>
+  <input id = "due_date" name = "due_date" type = "text">
 
   <button type = "submit"> Add Task </button>
 
