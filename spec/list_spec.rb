@@ -38,4 +38,13 @@ describe(List) do
     }
   }
 
+  describe('#save') do
+    it("saves a list to the database") do
+      test_list = List.new({:name => "movies", :id => nil})
+      test_list.save
+      List.clear
+      expect(List.all()).to(eq([]))
+    end
+  end
+
 end

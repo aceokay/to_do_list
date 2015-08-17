@@ -27,4 +27,8 @@ class List
     self.name() == another_list.name() && self.id == another_list.id
   end
 
+  define_singleton_method(:clear) do
+    DB.exec("DELETE FROM lists *;")
+  end
+
 end
