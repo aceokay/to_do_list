@@ -22,8 +22,8 @@ describe(Task) {
 
   describe ('#description') {
     it("lets you give it a description of a task") {
-      test_task = Task.new("make me coffee")
-      expect(test_task.description).to(eq("make me coffee"))
+      test_task = Task.new({:description => "learn SQL"})
+      expect(test_task.description).to(eq("learn SQL"))
     }
   }
 
@@ -34,18 +34,18 @@ describe(Task) {
   }
   describe ('#save') {
     it ("adds a task to the array of saved tasks") {
-        new_task = Task.new("water the cactus")
-        new_task.save()
-        expect(Task.all()).to(eq([new_task]))
+        test_task = Task.new({:description => "learn SQL"})
+        test_task.save()
+        expect(Task.all()).to(eq([test_task]))
       }
   }
-  describe('.clear') {
-    it ("clears the list of tasks that were saved") {
-      new_task = Task.new("feed the midget")
-      new_task.save
-      Task.clear
-      expect(Task.all).to(eq([]))
-    }
-  }
+  # describe('.clear') {
+  #   it ("clears the list of tasks that were saved") {
+  #     new_task = Task.new("feed the midget")
+  #     new_task.save
+  #     Task.clear
+  #     expect(Task.all).to(eq([]))
+  #   }
+  # }
 
 }
