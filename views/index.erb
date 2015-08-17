@@ -1,17 +1,14 @@
-<p>Do this stuff!</p>
+<% if @lists.empty? %>
+  <h3>You haven't created any lists yet.</h3>
+<% else %>
+ <h3>Here are all your lists:</h3>
+  <div class="list-group">
+    <% @lists.each do |list| %>
+    <a class="list-group-item" href="/lists/<%=list.id%>"><%=list.name%></a>
+    <% end %>
+  </div>
+<% end %>
 
-<ul>
-  <% @tasks.each do |task| %>
-    <li><%= task.description %></li>
-  <% end %>
-</ul>
-
-
-<p>Create a new task: </p>
-<form action = "/tasks" method = "post">
-  <label for = "description">Task Description </label>
-  <input id = "description" name = "description" type = "text">
-
-  <button type = "submit"> Add Task </button>
-
-</form>
+<div class="row">
+  <a href="/lists/new">Create New List</a>
+</div>
