@@ -43,6 +43,13 @@ get('/lists/:id') do
 end
 
 post("/clear_list") do
-
   erb(:list)
+end
+
+get("/lists/:id/delete") do
+  id = params.fetch('id').to_i()
+  list_to_delete = List.find(id)
+  list_to_delete.delete_list()
+  @lists = List.all()
+  erb(:index)
 end

@@ -2,9 +2,14 @@
   <h3>You haven't created any lists yet.</h3>
 <% else %>
  <h3>Here are all your lists:</h3>
-  <div class="list-group">
+  <div class="column col-md-9 list-group">
     <% @lists.each do |list| %>
-    <a class="list-group-item" href="/lists/<%=list.id%>"><%=list.name%></a>
+      <a class="list-group-item" href="/lists/<%=list.id%>"><%=list.name%></a>
+    <% end %>
+  </div>
+  <div class="column col-md-3 list-group">
+    <% @lists.each do |list| %>
+      <a class="list-group-item btn btn-danger" role="button" href="/lists/<%=list.id%>/delete">X</a>
     <% end %>
   </div>
 <% end %>
