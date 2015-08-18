@@ -1,39 +1,42 @@
-<p>Do this stuff!</p>
-
 <% if @tasks != nil %>
-<div class="column col-md-6 list-group">
-    <% @tasks.each do |task| %>
-      <div class="list-group-item"><%= task.description %></li>
-    <% end %>
-</div>
-<div class="column col-md-4 list-group">
-    <% @tasks.each do |task| %>
-      <div class="list-group-item"><%= task.due_date %></li>
-    <% end %>
-</div>
-<div class="column col-md-2 list-group">
-    <% @tasks.each do |task| %>
-      <a class="list-group-item btn btn-danger" role="button" href="/list/:id/delete/<%=task.description%>">X</li>
-    <% end %>
-</div>
+<div class="row">
+  <div class="column col-md-6 list-group">
+      <% @tasks.each do |task| %>
+        <div class="list-group-item"><%= task.description %></div>
+      <% end %>
+  </div>
+  <div class="column col-md-4 list-group">
+      <% @tasks.each do |task| %>
+        <div class="list-group-item"><%= task.due_date %></div>
+      <% end %>
+  </div>
+  <div class="column col-md-2 list-group">
+      <% @tasks.each do |task| %>
+        <a class="list-group-item btn btn-danger" role="button" href="/lists/<%=@list.id%>/delete/<%=task.description%>">X</a>
+      <% end %>
+  </div>
 <% end %>
+</div>
 
+<div class="row">
+  <p>Create a new task: </p>
+  <form action = "/tasks" method = "post">
+    <input id="list_id" name="list_id" type="hidden" value="<%=@list.id%>">
 
-<p>Create a new task: </p>
-<form action = "/tasks" method = "post">
-  <input id="list_id" name="list_id" type="hidden" value="<%=@list.id%>">
+    <label for = "description">Task Description </label>
+    <input id = "description" name = "description" type = "text">
 
-  <label for = "description">Task Description </label>
-  <input id = "description" name = "description" type = "text">
+    <label for = "due_date">Task Due Date </label>
+    <input type = "date" id = "due_date" name = "due_date">
 
-  <label for = "due_date">Task Due Date </label>
-  <input type = "date" id = "due_date" name = "due_date">
+    <button type = "submit"> Add Task </button>
+  </form>
+</div>
 
-  <button type = "submit"> Add Task </button>
-</form>
+<div class="row">
+  <form action="/clear_list" method ="post">
+    <button type="submit">Clear Tasks</button>
+  </form>
 
-<form action="/clear_list" method ="post">
-  <button type="submit">Clear Tasks</button>
-</form>
-
-<a href="/">Back To Lists</a>
+  <a href="/">Back To Lists</a>
+</div>

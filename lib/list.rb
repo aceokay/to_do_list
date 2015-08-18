@@ -51,11 +51,11 @@ class List
     list_tasks
   end
 
-  define_method(:find_task) do |ind_task|
+  define_method(:find_task) do |description|
     all_list_tasks = self.tasks
     found_task = nil
     all_list_tasks.each do |task|
-      found_task = task if task.description == ind_task.description
+      found_task = task if task.description == description
     end
     found_task
   end

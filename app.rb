@@ -55,5 +55,11 @@ get("/lists/:id/delete") do
 end
 
 get("/lists/:id/delete/:description") do
-  
+  id = params.fetch('id').to_i
+  description = params.fetch('description')
+  @list = List.find(id)
+  task_to_delete = @list.find_task(description)
+  task_to_delete.delete_task
+  @tasks = @list.tasks
+  erb(:list)
 end

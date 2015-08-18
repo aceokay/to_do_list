@@ -81,7 +81,7 @@ describe(List) do
       task_2.save()
       task_3 = Task.new({:description => "learn ember", :list_id => test_list.id(), :due_date => '2015-08-17 00:00:00'})
       task_3.save()
-      expect(test_list.find_task(task_2)).to(eq(task_2))
+      expect(test_list.find_task(task_2.description)).to(eq(task_2))
     end
   end
 
