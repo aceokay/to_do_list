@@ -50,4 +50,10 @@ class List
     end
     list_tasks
   end
+
+  define_method(:list_clear) do
+    # list_tasks = self.tasks
+    DB.exec("DELETE FROM tasks * WHERE list_id = #{self.id};")
+    # list_tasks = []
+  end
 end
