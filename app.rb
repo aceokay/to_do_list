@@ -56,7 +56,7 @@ end
 
 get("/lists/:id/delete/:description") do
   id = params.fetch('id').to_i
-  description = params.fetch('description')
+  description = params.fetch('description').gsub(" ", "_")
   @list = List.find(id)
   task_to_delete = @list.find_task(description)
   task_to_delete.delete_task

@@ -12,7 +12,7 @@
   </div>
   <div class="column col-md-2 list-group">
       <% @tasks.each do |task| %>
-        <a class="list-group-item btn btn-danger" role="button" href="/lists/<%=@list.id%>/delete/<%=task.description%>">X</a>
+        <a class="list-group-item btn btn-danger" role="button" href="/lists/<%=@list.id%>/delete/<%=task.description.gsub!("_", " ")%>">X</a>
       <% end %>
   </div>
 <% end %>
