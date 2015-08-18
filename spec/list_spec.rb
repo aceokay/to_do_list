@@ -86,5 +86,14 @@ describe(List) do
     end
   end
 
-
+  describe('#delete_list') do
+    it('deletes a given instance of the List class') do
+      test_list = List.new({:name => "movies", :id => nil})
+      test_list.save
+      test_list_2 = List.new({:name => "chores", :id => nil})
+      test_list_2.save
+      test_list.delete_list()
+      expect(List.all()).to(eq([test_list_2]))
+    end
+  end
 end
