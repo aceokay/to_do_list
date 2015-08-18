@@ -30,4 +30,8 @@ class Task
   define_method(:==) do |another_task|
     self.description() == another_task.description() && self.list_id == another_task.list_id && self.due_date == another_task.due_date
   end
+
+  define_method(:delete_task) do
+    DB.exec("DELETE FROM tasks WHERE description = '#{self.description()}';")
+  end
 end
