@@ -1,11 +1,21 @@
 <p>Do this stuff!</p>
 
 <% if @tasks != nil %>
-<ul>
-  <% @tasks.each do |task| %>
-  <li><%= task.description %></li>
-  <% end %>
-</ul>
+<div class="column col-md-6 list-group">
+    <% @tasks.each do |task| %>
+      <div class="list-group-item"><%= task.description %></li>
+    <% end %>
+</div>
+<div class="column col-md-4 list-group">
+    <% @tasks.each do |task| %>
+      <div class="list-group-item"><%= task.due_date %></li>
+    <% end %>
+</div>
+<div class="column col-md-2 list-group">
+    <% @tasks.each do |task| %>
+      <a class="list-group-item btn btn-danger" role="button" href="/list/:id/delete/<%=task.description%>">X</li>
+    <% end %>
+</div>
 <% end %>
 
 
@@ -17,7 +27,7 @@
   <input id = "description" name = "description" type = "text">
 
   <label for = "due_date">Task Due Date </label>
-  <input id = "due_date" name = "due_date" type = "text">
+  <input type = "date" id = "due_date" name = "due_date">
 
   <button type = "submit"> Add Task </button>
 </form>

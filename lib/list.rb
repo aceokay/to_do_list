@@ -41,7 +41,7 @@ class List
 
   define_method(:tasks) do
     list_tasks = []
-    returned_tasks = DB.exec("SELECT * FROM tasks WHERE list_id = #{self.id};")
+    returned_tasks = DB.exec("SELECT * FROM tasks WHERE list_id = #{self.id} ORDER BY due_date ASC;")
     returned_tasks.each do |task|
       description = task.fetch("description")
       list_id = task.fetch("list_id").to_i
@@ -49,6 +49,15 @@ class List
       list_tasks << Task.new({:description => description, :list_id => list_id, :due_date => due_date})
     end
     list_tasks
+  end
+
+  define_method(:find_task) do |ind_task|
+    all_list_tasks = self.tasks
+    found_task = nil
+    all_list_tasks.each do |task|
+      found_task = task if task.description == ind_task.description
+    end
+    found_task
   end
 
   define_method(:list_clear) do

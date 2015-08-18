@@ -53,3 +53,7 @@ get("/lists/:id/delete") do
   @lists = List.all()
   erb(:index)
 end
+
+get("/lists/:id/delete/:description") do
+  
+end
