@@ -12,6 +12,24 @@
       <a class="list-group-item btn btn-danger" role="button" href="/lists/<%=list.id%>/delete">X</a>
     <% end %>
   </div>
+
+  <div class="column col-md-9 list-group">
+    <form action="/tasks" method="post" class="list-group-item">
+      <label for="description">Description of the task:</label>
+      <input id="description" name="description" type="text">
+
+      <label for="list_id">Select a List</label>
+      <select id='list_id' name='list_id' type='text'>
+        <% @lists.each() do |list| %>
+          <option value="<%= list.id()%>"> <%= list.name() %> </option>
+        <% end %>
+      </select>
+    </div>
+      <div class="column col-md-3 list-group">
+        <button class="list-group-item btn btn-info" type="submit">Add task</button>
+      </div>
+    </form>
+
 <% end %>
 
 <div class="row">
