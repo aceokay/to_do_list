@@ -5,7 +5,7 @@ require("./lib/tasks")
 require("./lib/list")
 require('pg')
 
-DB = PG.connect({:dbname => "to_do"})
+DB = PG.connect({:dbname => "todo"})
 
 get("/") do
   @lists = List.all()
