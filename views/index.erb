@@ -18,6 +18,9 @@
       <label for="description">Description of the task:</label>
       <input id="description" name="description" type="text">
 
+      <label for = "due_date">Task Due Date </label>
+      <input type = "date" id = "due_date" name = "due_date">
+
       <label for="list_id">Select a List</label>
       <select id='list_id' name='list_id' type='text'>
         <% @lists.each() do |list| %>

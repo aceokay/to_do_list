@@ -18,7 +18,7 @@
 <% end %>
 </div>
 
-<div class="row">
+<!-- <div class="row">
   <p>Create a new task: </p>
   <form action = "/tasks" method = "post">
     <input id="list_id" name="list_id" type="hidden" value="<%=@list.id%>">
@@ -31,11 +31,11 @@
 
     <button type = "submit"> Add Task </button>
   </form>
-</div>
+</div> -->
 
 <div class="row">
   <form action="/clear_list" method ="post">
-    <button type="submit">Clear Tasks</button>
+    <button class="list-group-item btn btn-danger" type="submit">Clear Tasks</button>
   </form>
 
   <a href="/">Back To Lists</a>
